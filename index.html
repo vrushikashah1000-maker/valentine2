@@ -1,0 +1,63 @@
+</head>
+
+<body>
+
+  <h1 id="question">❤️ Will you be my Valentine, Dhruvik? ❤️</h1>
+
+  <button id="yes" onclick="sayYes()">Yes ❤️</button>
+  <button id="no" onmouseover="hideNo()">No 💔</button>
+
+  <!-- PHOTOS -->
+  <div class="photos" id="photos">
+    <img src="photo1.jpg" onclick="openFull(this)">
+    <img src="photo2.jpg" onclick="openFull(this)">
+    <img src="photo3.jpg" onclick="openFull(this)">
+    <img src="photo4.jpg" onclick="openFull(this)">
+  </div>
+
+  <!-- FULLSCREEN VIEW -->
+  <div id="fullscreen" onclick="this.style.display='none'">
+    <img id="fullImg">
+  </div>
+
+  <footer id="footer"></footer>
+
+  <!-- MUSIC -->
+  <audio id="music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/03/audio_7c45b0f4d0.mp3">
+  </audio>
+
+  <script>
+    function sayYes() {
+      document.getElementById("music").play();
+      document.getElementById("question").innerHTML =
+        "💖 You said YES 💖<br>I promise to choose you every day 🥰";
+      document.getElementById("photos").style.display = "block";
+      document.getElementById("footer").innerHTML =
+        "Forever yours,<br><strong>Vrushika ❤️</strong>";
+    }
+
+    function hideNo() {
+      document.getElementById("no").style.display = "none";
+    }
+
+    function openFull(img) {
+      document.getElementById("fullscreen").style.display = "block";
+      document.getElementById("fullImg").src = img.src;
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
